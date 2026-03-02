@@ -1,1 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap");
 @import "tailwindcss";
+
+
+@theme{
+    --color-bg: #0f0c1d;
+    --color-card: #1a1530;
+    --color-accent1: #ff4d6d;
+    --color-accent2: #ffbe0b;
+    --color-accent3: #06d6a0;
+    --color-accent4: #4361ee;
+    --color-text: #f0e6ff;
+    --color-muted: #8b7baa;
+
+    --font-bangers : 'Bangers', cursive;
+}
+
+@layer components{
+    .quiz-logo{
+        @apply font-[Bangers]
+        bg-[linear-gradient(90deg,var(--color-accent1),var(--color-accent2))]
+        bg-clip-text
+        text-transparent;
+    }
+}
+
+@keyframes float{
+    0% {transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% {opacity: 0.18;}
+    90% {opacity: 0.18;}
+    100% {transform: translateY(-10vh) rotate(720deg); opacity: 0;}
+}
+.dot{
+    position: fixed;
+    border-radius: 50%;
+    animation: float linear infinite;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes shimmer {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.shimmer-text {
+    background-size: 200%;
+    animation: shimmer 4s linear infinite;
+}
+
