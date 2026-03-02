@@ -61,7 +61,7 @@ function InGameQuiz() {
 
     }
     if (loading) return (
-        <section className="w-full h-screen bg-bg flex items-center justify-center">
+        <section className="w-full h-screen bg-bg flex items-inbetween justify-center">
             <Loader />
         </section>
     );

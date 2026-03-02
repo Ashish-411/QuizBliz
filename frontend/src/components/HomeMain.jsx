@@ -1,10 +1,18 @@
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 function HomeMain() {
     const navigate = useNavigate();
+    const {logout} = useAuth();
 
     function handleInGameQuiz(e){
         e.preventDefault();
         navigate("/in-game");
+    }
+    function handleLogout(e){
+        e.preventDefault();
+        logout();
+        navigate("/login");
+
     }
     return (
         <section className="grid grid-cols-2 gap-[20px] w-full max-w-[560px] mx-auto">
@@ -49,7 +57,8 @@ function HomeMain() {
             <button className="col-span-2 flex flex-row items-center justify-center gap-3
                 px-6 py-4 rounded-[14px] cursor-pointer bg-transparent
                 border-2 border-white/10 text-muted text-[0.9rem] font-extrabold
-                transition-all duration-200 hover:border-[rgba(255,77,109,0.5)] hover:text-accent1">
+                transition-all duration-200 hover:border-[rgba(255,77,109,0.5)] hover:text-accent1"
+            onClick={handleLogout}>
                 <span className="text-[1.2rem]">🚪</span>
                 Exit
             </button>

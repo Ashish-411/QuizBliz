@@ -28,9 +28,7 @@ const createUser = async(req,res)=>{
         }
         const user = await User.create({username,email,password});
         res.status(201).json({
-            _id: user._id,
-            username: user.username,
-            email: user.email
+            message: "Sign Up Successful"
         });
     }catch(err){
         res.status(400).json({error: err.message});
@@ -59,7 +57,7 @@ const loginUser = async(req,res) =>{
         const user = await User.findOne({email});
         if(!user){
             return res.status(401).json({
-                message:"Invaild email or password"
+                message:"Invalid email or password"
             })
         }
         const isMatch = await bcrypt.compare(password,user.password);

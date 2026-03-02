@@ -1,9 +1,10 @@
 import Header from "./Header";
-function Layout({children}){
+import { Outlet } from "react-router-dom";
+function Layout(){
     return(
         <section className="w-screen h-screen">
             <Header/>
-            {children}
+            <Outlet/>
         </section>
     );
 
