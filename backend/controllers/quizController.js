@@ -139,12 +139,7 @@ const getSingleQuiz = async(req,res) =>{
 //get all quizzes
 const getAllQuizzes = async(req,res) =>{
     try{
-        const quizzes = await Quiz.find({createdBy: req.user._id}).lean();
-        if(!quizzes || quizzes.length === 0){
-            return res.status(404).json({
-                message: "Quizzes not found"
-            });
-        }
+        const quizzes = await Quiz.find({createdBy: req.user._id}).sort({createdAt: -1}).lean();
         res.status(200).json({
             quizzes
         });

@@ -8,6 +8,11 @@ function CreateQuiz(){
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    function handleBackClick(e){
+        e.preventDefault();
+        navigate("/");
+    }
     
 
     async function handleSubmit(e){
@@ -34,7 +39,14 @@ function CreateQuiz(){
     
     return(
         <section className="w-full min-h-screen bg-bg flex items-center justify-center px-4">
-            <div className="w-full max-w-[520px] bg-card rounded-[24px] p-10
+             <button 
+                onClick={handleBackClick}
+                className="self-start ml-4 flex gap-2 px-4 py-2 rounded-full
+                    border border-white/10 text-muted text-sm font-bold
+                    hover:border-accent2/50 hover:text-accent2 transition-all duration-200">
+                ↩ Back
+            </button>
+            <div className="w-full max-w-[500px] bg-card rounded-[24px] p-10
                 border border-white/10 shadow-[0_8px_48px_rgba(0,0,0,0.4)]
                 flex flex-col gap-6">
 

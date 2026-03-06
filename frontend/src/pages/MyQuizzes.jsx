@@ -10,6 +10,11 @@ function MyQuizzes() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    function handleBackClick(e){
+        e.preventDefault();
+        navigate("/");
+    }
+
     async function fetchQuizzes() {
         try {
             setLoading(true);
@@ -34,6 +39,13 @@ function MyQuizzes() {
 
     return (
         <section className="w-full min-h-screen bg-bg px-4 sm:px-8 py-10">
+             <button 
+                onClick={handleBackClick}
+                className="self-start ml-4 flex items-center gap-2 px-4 py-2 rounded-full
+                    border border-white/10 text-muted text-sm font-bold
+                    hover:border-accent2/50 hover:text-accent2 transition-all duration-200">
+                ↩ Back
+            </button>
 
             {/* Header */}
             <div className="max-w-[900px] mx-auto mb-8 flex items-center justify-between">

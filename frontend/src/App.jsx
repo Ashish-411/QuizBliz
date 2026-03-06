@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CreateQuiz from "./pages/createQuiz";
 import MyQuizzes from "./pages/MyQuizzes";
+import CustomQuiz from "./pages/CustomQuiz";
+import CustomQuestionView from "./pages/CustomQuestionView";
 function App() {
 
   return (
@@ -14,17 +16,13 @@ function App() {
         <Route path= "/login" element={<Login/>}/>
         <Route element={<Layout/>}>
           <Route path="/" element={<Home/>}/>  
-          <Route path="/in-game" element={<InGameQuiz/>}/>  
-          <Route path="/create-quiz" element={
-            <ProtectedRoute>
-              <CreateQuiz/>
-            </ProtectedRoute>
-          }/>  
-          <Route path="/my-quizzes" element={
-            <ProtectedRoute>
-              <MyQuizzes/>
-            </ProtectedRoute>
-          }/>  
+          <Route path="/in-game" element={<InGameQuiz/>}/> 
+            <Route element={<ProtectedRoute/>}>
+              <Route path="/create-quiz" element={<CreateQuiz/>}/>  
+              <Route path="/my-quizzes" element={<MyQuizzes/>}/>  
+              <Route path="/customquiz/:id" element={<CustomQuiz/>}/>  
+              <Route path="/customquiz-view/:id/question" element={<CustomQuestionView/>}/>  
+            </Route> 
           
         </Route>
       </Routes>    
