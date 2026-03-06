@@ -8,6 +8,7 @@ import CreateQuiz from "./pages/createQuiz";
 import MyQuizzes from "./pages/MyQuizzes";
 import CustomQuiz from "./pages/CustomQuiz";
 import CustomQuestionView from "./pages/CustomQuestionView";
+import CustomQuestionAdd from "./pages/CustomQuestionAdd";
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/my-quizzes" element={<MyQuizzes/>}/>  
               <Route path="/customquiz/:id" element={<CustomQuiz/>}/>  
               <Route path="/customquiz-view/:id/question" element={<CustomQuestionView/>}/>  
+              <Route path="/customquiz-add/:id/question" element={<CustomQuestionAdd/>}/>  
             </Route> 
           
         </Route>

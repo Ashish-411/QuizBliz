@@ -1,13 +1,39 @@
-import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import api from "../utils/api";
+import Loader from "../components/Loader";
 
 function CustomQuiz() {
-    const { state: quiz } = useLocation();
+    const {id} = useParams();
+    const [quiz,setQuiz] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(() =>{
+        async function fetchSingleQuiz(){
+            try{
+                const res = await api.get(`api/quiz/get-single-quiz/${id}`);
+                setQuiz(res.data.quiz);
+            }catch(err){
+                console.log(err);
+            }
+        }
+        fetchSingleQuiz();
+    },[]);
+
+    function handleAddClick(e){
+        e.preventDefault();
+        navigate(`/customquiz-add/${quiz._id}/question`,{state: quiz});
+    }
+
     function handleQuestionView(e){
         e.preventDefault();
         navigate(`/customquiz-view/${quiz._id}/question`, {state: quiz.questions});   
     }
+    if (!quiz) return (
+    <section className="w-full h-screen bg-bg flex items-center justify-center">
+        <Loader />
+    </section>
+    );
 
     return (
         <section className="w-full min-h-screen bg-bg flex flex-col items-center
@@ -48,7 +74,7 @@ function CustomQuiz() {
 
                 {/* Add Question */}
                 <button
-                    onClick={() => navigate(`/customquiz/${quiz._id}/add-question`, { state: quiz })}
+                    onClick={handleAddClick}
                     style={{ background: 'linear-gradient(135deg, #4361ee, #7209b7)' }}
                     className="w-full flex items-center justify-between px-6 py-4
                         rounded-[16px] text-white font-extrabold text-base tracking-wide

@@ -24,22 +24,6 @@ function QuestionCard({ question, index }) {
                 {question.question}
             </p>
 
-            {/* Options */}
-            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-3">
-                {question.options.map((option, i) => (
-                    <div key={i}
-                        className={`px-4 py-3 rounded-[12px] border text-sm font-semibold
-                            ${i === question.correctAnswer
-                                ? "border-accent3 bg-[rgba(6,214,160,0.1)] text-accent3"
-                                : "border-white/10 text-muted"
-                            }`}>
-                        <span className="font-extrabold mr-2 opacity-60">
-                            {['A', 'B', 'C', 'D'][i]}.
-                        </span>
-                        {option}
-                    </div>
-                ))}
-            </div>
 
         </div>
     );
