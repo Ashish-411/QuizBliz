@@ -8,6 +8,14 @@ function HomeMain() {
         e.preventDefault();
         navigate("/in-game");
     }
+    function handleCreateQuiz(e){
+        e.preventDefault();
+        navigate("create-quiz");
+    }
+    function handleMyQuizzes(e){
+        e.preventDefault();
+        navigate("/my-quizzes");
+    }
     function handleLogout(e){
         e.preventDefault();
         logout();
@@ -36,7 +44,8 @@ function HomeMain() {
                 className="flex flex-col items-center gap-2 px-6 py-8
                 rounded-[20px] border-none cursor-pointer text-white shadow-[0_8px_28px_rgba(67,97,238,0.4)]
                 transition-all duration-200 hover:-translate-y-1.5 hover:scale-[1.03]
-                hover:shadow-[0_12px_40px_rgba(67,97,238,0.6)]">
+                hover:shadow-[0_12px_40px_rgba(67,97,238,0.6)]"
+                onClick={handleCreateQuiz}>
                 <div className="text-[2.4rem] leading-none">✏️</div>
                 <div className="text-[1.05rem] font-extrabold">Create Quiz</div>
                 <div className="text-[0.75rem] font-semibold opacity-70 mt-[-4px]">Build your own</div>
@@ -47,7 +56,8 @@ function HomeMain() {
                 className="flex flex-col items-center gap-2 px-6 py-8
                 rounded-[20px] border-none cursor-pointer text-white shadow-[0_8px_28px_rgba(6,214,160,0.35)]
                 transition-all duration-200 hover:-translate-y-1.5 hover:scale-[1.03]
-                hover:shadow-[0_12px_40px_rgba(6,214,160,0.55)]">
+                hover:shadow-[0_12px_40px_rgba(6,214,160,0.55)]"
+                onClick={handleMyQuizzes}>
                 <div className="text-[2.4rem] leading-none">📚</div>
                 <div className="text-[1.05rem] font-extrabold">My Quizzes</div>
                 <div className="text-[0.75rem] font-semibold opacity-70 mt-[-4px]">View your library</div>
