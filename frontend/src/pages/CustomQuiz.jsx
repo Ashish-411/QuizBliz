@@ -20,6 +20,11 @@ function CustomQuiz() {
         fetchSingleQuiz();
     },[]);
 
+    function handlePlayQuiz(e){
+        e.preventDefault();
+        navigate(`/customquiz/${quiz._id}/play`,{state: quiz});
+    }
+
     function handleAddClick(e){
         e.preventDefault();
         navigate(`/customquiz-add/${quiz._id}/question`,{state: quiz});
@@ -65,7 +70,8 @@ function CustomQuiz() {
                         rounded-[16px] text-white font-extrabold text-base tracking-wide
                         shadow-[0_8px_24px_rgba(255,77,109,0.4)]
                         hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(255,77,109,0.6)]
-                        transition-all duration-200">
+                        transition-all duration-200"
+                    onClick={handlePlayQuiz}>
                     <span>Play Quiz</span>
                     <span className="text-white/60 text-sm font-semibold">
                         {quiz.questions.length === 0 ? "No questions yet" : `${quiz.questions.length} Qs`}
